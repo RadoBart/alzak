@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'ro.florinpatan.gopher'
-version '2019.2.4'
+version '2019.2.5'
 
 sourceCompatibility = 1.8
 
@@ -17,7 +17,7 @@ dependencies {
 }
 
 intellij {
-    version '2019.2'
+    version 'IU-2019.2'
 }
 
 patchPluginXml {

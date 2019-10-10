@@ -1,4 +1,4 @@
-package ro.florinpatan.gopher;
+package ro.florinpatan.gopher.progressbar;
 
 import com.intellij.ide.ui.LafManager;
 

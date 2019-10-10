@@ -18,7 +18,17 @@
 
     <application-components>
         <component>
-            <implementation-class>ro.florinpatan.gopher.GopherApplicationComponent</implementation-class>
+            <implementation-class>ro.florinpatan.gopher.progressbar.GopherApplicationComponent</implementation-class>
         </component>
     </application-components>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <backgroundPostStartupActivity implementation="ro.florinpatan.gopher.autoinspections.AutoInspections" />
+    </extensions>
+
+    <project-components>
+        <component>
+            <implementation-class>ro.florinpatan.gopher.autoinspections.AutoInspections</implementation-class>
+        </component>
+    </project-components>
 </idea-plugin>
