@@ -100,24 +100,18 @@ public class DelayedDocumentWatcher implements AutoInspectionsWatcher {
     private class MyDocumentAdapter implements DocumentListener {
         @Override
         public void documentChanged(@NotNull DocumentEvent event) {
-            if (myDocumentSavingInProgress) {
-        /* When {@link FileDocumentManager#saveAllDocuments} is called,
-           {@link com.intellij.openapi.editor.impl.TrailingSpacesStripper} can change a document.
-           These needless 'documentChanged' events should be filtered out.
-         */
-                return;
-            }
+            /* When {@link FileDocumentManager#saveAllDocuments} is called,
+               {@link com.intellij.openapi.editor.impl.TrailingSpacesStripper} can change a document.
+               These needless 'documentChanged' events should be filtered out.
+             */
+            if (myDocumentSavingInProgress) return;
+
             final VirtualFile file = FileDocumentManager.getInstance().getFile(event.getDocument());
-            if (file == null) {
-                return;
-            }
+            if (file == null) return;
+
             if (!myChangedFiles.contains(file)) {
-                if (ProjectUtil.isProjectOrWorkspaceFile(file)) {
-                    return;
-                }
-                if (myChangedFileFilter != null && !myChangedFileFilter.value(file)) {
-                    return;
-                }
+                if (ProjectUtil.isProjectOrWorkspaceFile(file)) return;
+                if (myChangedFileFilter != null && !myChangedFileFilter.value(file)) return;
 
                 myChangedFiles.add(file);
             }
@@ -132,24 +126,20 @@ public class DelayedDocumentWatcher implements AutoInspectionsWatcher {
         public void run() {
             final int oldModificationStamp = myModificationStamp;
             asyncCheckErrors(myChangedFiles, errorsFound -> {
-                if (Disposer.isDisposed(myDisposable)) {
-                    return;
-                }
-                if (myModificationStamp != oldModificationStamp) {
-                    // 'documentChanged' event was raised during async checking files for errors
-                    // Do nothing in that case, this method will be invoked subsequently.
-                    return;
-                }
-                if (errorsFound) {
-                    // Do nothing, if some changed file has syntax errors.
-                    // This method will be invoked subsequently, when syntax errors are fixed.
-                    return;
-                }
+                if (Disposer.isDisposed(myDisposable)) return;
+
+                // 'documentChanged' event was raised during async checking files for errors
+                // Do nothing in that case, this method will be invoked subsequently.
+                if (myModificationStamp != oldModificationStamp) return;
+
+                // Do nothing, if some changed file has syntax errors.
+                // This method will be invoked subsequently, when syntax errors are fixed.
+                if (errorsFound) return;
+
+                // This method will be invoked when the completion popup is hidden.
                 LookupEx activeLookup = LookupManager.getInstance(myProject).getActiveLookup();
-                if (activeLookup != null && activeLookup.isCompletion()) {
-                    // This method will be invoked when the completion popup is hidden.
-                    return;
-                }
+                if (activeLookup != null && activeLookup.isCompletion()) return;
+
                 myModificationStampConsumer.consume(myModificationStamp, myChangedFiles);
             });
         }
@@ -160,9 +150,7 @@ public class DelayedDocumentWatcher implements AutoInspectionsWatcher {
         ApplicationManager.getApplication().executeOnPooledThread(() -> {
             final boolean errorsFound = ReadAction.compute(() -> {
                 for (VirtualFile file : files) {
-                    if (PsiErrorElementUtil.hasErrors(myProject, file)) {
-                        return true;
-                    }
+                    if (PsiErrorElementUtil.hasErrors(myProject, file)) return true;
                 }
                 return false;
             });
