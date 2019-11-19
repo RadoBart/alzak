@@ -20,6 +20,10 @@ intellij {
     version 'IU-2019.2'
 }
 
+runIde {
+    maxHeapSize = "2g"
+}
+
 patchPluginXml {
     untilBuild '193.*'
 
