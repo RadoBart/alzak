@@ -21,8 +21,8 @@ import static ro.florinpatan.gopher.GopherIcons.GOPHER_ICON;
 
 public class GopherProgressBarUi extends BasicProgressBarUI {
     private static final float[] FRACTIONS = {0.5f, 1f};
-    private static final Color GOPHER_COLOR_START = new JBColor(new Color(1, 173, 216), new Color(1, 173, 216));
-    private static final Color GOPHER_COLOR_END = new JBColor(new Color(0, 162, 156), new Color(0, 162, 156));
+    private static final Color GOPHER_COLOR_START = new JBColor(new Color(33, 227, 23), new Color(33, 227, 23));
+    private static final Color GOPHER_COLOR_END = new JBColor(new Color(28, 204, 18), new Color(28, 204, 18));
     private static final Color[] COLORS = {GOPHER_COLOR_START, GOPHER_COLOR_END};
     private static final JBColor SHADES_OF_GREY = new JBColor(Gray._240.withAlpha(50), Gray._128.withAlpha(50));
     private static final JBColor SHADES_OF_GREY2 = new JBColor(Gray._165.withAlpha(50), Gray._88.withAlpha(50));

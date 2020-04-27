@@ -1,15 +1,17 @@
 <idea-plugin>
-    <id>ro.florinpatan.gopher</id>
-    <name>Gopher</name>
-    <vendor email="florinpatan@gmail.com">Florin Pățan</vendor>
+    <id>RadoBart.gopher</id>
+    <name>Alzak</name>
+    <vendor email="bartanusr@gmail.com">Radovan Bartanus</vendor>
 
     <description><![CDATA[
-    The Gopher is here to enhance your Go (golang) development experience.<br>
+    The Alzak is here to annoy you while loading your IDE.<br>
     <br>
     <a href="https://www.jetbrains.com/go/learn/">Learn more about the IDE</a><br>
     <br>
-    Gopher icon based on the gopher created by Renee French under Creative Commons 3.0 Attributions.<br><br>
-    This plugin is based on the <a href="https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar">Nyan Progress Bar plugin</a> from Dmitry Batkovich.
+    Alzak icon is based on the mascot of Alza company.<br><br>
+    This plugin is based on the <a href="https://plugins.jetbrains.com/plugin/12875-gopher">Gopher Progress Bar plugin</a> from Florin Pățan.
+
+    All work should be attributed to him, I just changed the icon and the bar color.
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
