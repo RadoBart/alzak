@@ -15,7 +15,7 @@
 
     Gopher icon based on the gopher created by Renee French under Creative Commons 3.0 Attributions.
 
-    Based on the <a href="https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar">Nyan Progress Bar plugin> by Dmitry Batkovich.
+    Based on the <a href="https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar">Nyan Progress Bar plugin</a> by Dmitry Batkovich.
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
