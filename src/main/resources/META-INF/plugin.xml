@@ -12,6 +12,10 @@
     This plugin is based on the <a href="https://plugins.jetbrains.com/plugin/12875-gopher">Gopher Progress Bar plugin</a> from Florin Pățan.
 
     All work should be attributed to him, I just changed the icon and the bar color.
+
+    Gopher icon based on the gopher created by Renee French under Creative Commons 3.0 Attributions.
+
+    Based on the [Nyan Progress Bar plugin](https://plugins.jetbrains.com/plugin/8575-nyan-progress-bar) Dmitry Batkovich.
     ]]></description>
 
     <depends>com.intellij.modules.platform</depends>
